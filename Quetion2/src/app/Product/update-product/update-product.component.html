@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product Details</title>
+</head>
+
+<body>
+    <section class="vh-100" style="background-color:lightpink;">
+        <div class="container">
+            <div class="card text-center w-80 h-50">
+                <div class="card-body">
+                    <h1>Update Product Data</h1>
+
+                    <form method="post" #productForm="ngForm" (submit)="onUpdate()">
+                        <input type="text" hidden name="_id" #_id="ngModel" required [(ngModel)]="prod._id"> 
+                        <input type="text" class="form-control mb-3" placeholder="Enter Name.." name="name"
+                            #password="ngModel" required [(ngModel)]="prod.name">
+                        <div *ngIf="productForm.controls['name'].errors!=null && productForm.controls['name'].invalid && (productForm.controls['name'].dirty || productForm.controls['name'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="productForm.controls['name'].errors['required']">
+                                Product name is required.
+                            </div>
+                        </div>
+                        <input type="number" class="form-control mb-3" placeholder="Enter price.." name="price"
+                            #password="ngModel" required [(ngModel)]="prod.price">
+                        <div *ngIf="productForm.controls['price'].errors!=null && productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="productForm.controls['price'].errors['required']">
+                                Product Price is required.
+                            </div>
+                        </div>
+                        <input type="number" class="form-control mb-3" placeholder="Enter quantity.." name="quantity"
+                            #password="ngModel" required [(ngModel)]="prod.quantity">
+                        <div *ngIf="productForm.controls['quantity'].errors!=null && productForm.controls['quantity'].invalid && (productForm.controls['quantity'].dirty || productForm.controls['quantity'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="productForm.controls['quantity'].errors['required']">
+                                Quantity is required.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-round">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
